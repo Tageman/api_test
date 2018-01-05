@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 
 import xlrd
-import yaml
 import json
 import requests
 import comm_login
