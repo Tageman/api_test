@@ -22,7 +22,12 @@ def read_excel(address):
         request_method = str(list[3].encode('utf-8'))
         request_data = str(list[4].encode('utf-8'))
         request_code = int(list[5])
-        preview_code = int(list[6])
+
+        if list[6] == '':
+            preview_code = list[6]
+        else:
+            preview_code = int(list[6])
+
 
         # # 判断是什么类型在这里直接做处理
         # print(type(preview_code)) # float
