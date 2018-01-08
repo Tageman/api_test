@@ -56,16 +56,22 @@ def api_request(api_host,request_url,request_method,request_data,request_code,pr
         r = requests.put(api_host+request_url, headers=headers,data=request_data)
 
     elif request_method == 'DELETE':
-        r = requests.delete(api_host+request_url, headers=headers,data=request_data)
+        r = requests.delete(api_host+request_url, headers=headers)
 
     elif request_method == 'PATCH':
         r = requests.patch(api_host+request_url, headers=headers,data=request_data)
 
     # The processing results
-    if r.status_code == request_code and int(r.json()['code'].encode('utf-8')) == preview_code:
-        print('this ok {0}'.format(api_host + request_url))
+    if request_method != 'DELETE':
+        if r.status_code == request_code and int(r.json()['code'].encode('utf-8')) == preview_code:
+            print('this ok {0}'.format(api_host + request_url))
+        else:
+            print('this not ok {0}'.format(api_host + request_url))
     else:
-        print('this not ok {0}'.format(api_host + request_url))
+        if r.status_code == request_code:
+            print ('this ok {0}'.format(api_host + request_url))
+        else:
+            print ('this not ok {0}'.format(api_host + request_url))
 
 
 
