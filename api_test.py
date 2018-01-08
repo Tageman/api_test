@@ -17,12 +17,20 @@ def read_excel(address):
         # print list.decode('unicode-escape')
 
         list = table.row_values(i)
-        api_host = list[1]
-        request_url = list[2]
-        request_method = list[3]
-        request_data = list[4]
-        request_code = list[5]
-        preview_code = list[6]
+        api_host = str(list[1].encode('utf-8'))
+        request_url = str(list[2].encode('utf-8'))
+        request_method = str(list[3].encode('utf-8'))
+        request_data = str(list[4].encode('utf-8'))
+        request_code = int(list[5])
+        preview_code = int(list[6])
+
+        # # 判断是什么类型在这里直接做处理
+        # print(type(preview_code)) # float
+        # print(type(api_host))   # unicode
+        # print(type(request_url))   # unicode
+        # print(type(request_code))  # float
+        # print(type(request_data))   # unicode
+        # print(type(request_method))  # unicode
 
         api_request(api_host,request_url,request_method,request_data,request_code,preview_code)
 
@@ -54,7 +62,7 @@ def api_request(api_host,request_url,request_method,request_data,request_code,pr
         r = requests.patch(api_host+request_url, headers=headers,data=request_data)
 
     # The processing results
-    if r.status_code == int(request_code) and int(r.json()['code'].encode('utf-8')) == int(preview_code):
+    if r.status_code == request_code and int(r.json()['code'].encode('utf-8')) == preview_code:
         print('this ok {0}'.format(api_host + request_url))
     else:
         print('this not ok {0}'.format(api_host + request_url))
