@@ -22,7 +22,7 @@ def read_excel(address):
         request_method = str(list[3].encode('utf-8'))
         request_data = str(list[4].encode('utf-8'))
         request_code = int(list[5])
-
+        # 判断list是不是空，如果是空的话直接处理，不为空进行int操作
         if list[6] == '':
             preview_code = list[6]
         else:
@@ -66,7 +66,7 @@ def api_request(api_host,request_url,request_method,request_data,request_code,pr
     elif request_method == 'PATCH':
         r = requests.patch(api_host+request_url, headers=headers,data=request_data)
 
-    # The processing results
+    # The processing results（分两种情况，一种是有响应值，一种是没有响应值）
     if request_method != 'DELETE':
         if r.status_code == request_code and int(r.json()['code'].encode('utf-8')) == preview_code:
             print('this ok {0}'.format(api_host + request_url))
