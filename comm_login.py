@@ -1,8 +1,8 @@
 import requests
 
 def login():
-    datap = {'email': '*****', 'password': '******'}
-    r = requests.post('********', data=datap)
+    datap = {'email': '******', 'password': '****'}
+    r = requests.post('************', data=datap)
     # print(r.json()['data']['token'])
     return r.json()['data']['token']
 
