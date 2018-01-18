@@ -19,10 +19,10 @@ def read_excel(address):
         # print list.decode('unicode-escape')
 
         list = table.row_values(i)
-        api_host = str(list[1].encode('utf-8'))
-        request_url = str(list[2].encode('utf-8'))
-        request_method = str(list[3].encode('utf-8'))
-        request_data = str(list[4].encode('utf-8'))
+        api_host = str(list[1].encode('utf-8')).strip()
+        request_url = str(list[2].encode('utf-8')).strip()
+        request_method = str(list[3].encode('utf-8')).strip()
+        request_data = str(list[4].encode('utf-8')).strip()
         request_code = int(list[5])
 
         if list[6] == '':
