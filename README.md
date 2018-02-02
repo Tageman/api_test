@@ -17,3 +17,9 @@
 
 
 [![Python](https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3396642439,2113025435&fm=27&gp=0.jpg "Python")](https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3396642439,2113025435&fm=27&gp=0.jpg "Python")
+
+
+### 后续更改计划说明（V_0.0.2）
+
+------------
+1.  细节地方优化代码，增强功能健壮性
