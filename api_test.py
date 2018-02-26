@@ -56,9 +56,9 @@ def send_email():
 
     msg.attach(MIMEText('当前接口测试结果（结果全部显示在附件中）', 'plain', 'utf-8'))
 
-    att1 = MIMEText(open('result_{0}.txt'.format(time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())), 'rb').read(), 'base64', 'utf-8')
+    att1 = MIMEText(open('result_{0}.txt'.format(time.strftime("%Y-%m-%d-%H", time.localtime())), 'rb').read(), 'base64', 'utf-8')
     att1['Content-Type'] = 'application/octet-stream'
-    att1['Content-Disposition'] = 'attahment; filename="result_{0}.txt"'.format(time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime()))
+    att1['Content-Disposition'] = 'attahment; filename="result_{0}.txt"'.format(time.strftime("%Y-%m-%d-%H", time.localtime()))
     msg.attach(att1)
 
     smtpobj = smtplib.SMTP('smtp.139.com', 25)
@@ -68,7 +68,7 @@ def send_email():
 
 # 执行写文件（将结果写到文件中，并最后执行邮件）
 def write_file(request_result):
-    with open('result_{0}.txt'.format(time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())), 'a+') as file:
+    with open('result_{0}.txt'.format(time.strftime("%Y-%m-%d-%H", time.localtime())), 'a+') as file:
         file.write(request_result + '\n')
 
 
